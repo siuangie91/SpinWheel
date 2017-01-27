@@ -15,35 +15,26 @@
     height: 500px;
     border: 1px solid #ff0000;
     border-radius: 50%;
+    -webkit-transition: all 800ms ease-in-out;
+    -moz-transition: all 800ms ease-in-out;
+    -ms-transition: all 800ms ease-in-out;
     transition: all 800ms ease-in-out;
 }
 
 #wheel-container.origPos {
     transform: rotate(-90deg);
 }
-/*
-#wheel-container.posNeg210 {
-    transform: rotate(-210deg);
-}
-#wheel-container.posNeg150 {
-    transform: rotate(-150deg);
-}
-#wheel-container.posNeg30 {
-    transform: rotate(-30deg);
-}
-#wheel-container.pos30 {
-    transform: rotate(30deg);
-}
-#wheel-container.pos90 {
-    transform: rotate(90deg);
-}
-*/
+
 .spoke {
     width: 0px;
     height: 0px;
     overflow: visible;
     background-color: #000;
     position: absolute;
+    -webkit-transition: all 800ms ease-in-out;
+    -moz-transition: all 800ms ease-in-out;
+    -ms-transition: all 800ms ease-in-out;
+    transition: all 800ms ease-in-out;
 }
 
 .spoke-color {

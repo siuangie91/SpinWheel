@@ -8,7 +8,7 @@
                     originCoords: document.getElementById('origin').getBoundingClientRect(),
                     originCoordsX: document.getElementById('origin').getBoundingClientRect().left,
                     originCoordsY: document.getElementById('origin').getBoundingClientRect().top,
-                    prevRotation: -90
+                    prevRotation: -90 //-90deg is the pre-existing rotation
                 },
 
                 init: function () {
@@ -53,23 +53,19 @@
                         s.container.css({
                             'transform': 'rotate('+ degrees +'deg)'
                         });
+                        
+                        s.container.find('.spoke').css({
+                            'transform': 'rotate('+ -degrees +'deg)'
+                        });
                     }
 
                     var origin = -60; //each rotation is 60deg
                     s.circle.on('click', function () {
-//                        var index = $(this).index();
-//                        var deg = -90 + origin * index; //-90deg is the original pos
-//
-//                        rotate(deg);
-//                        
-//                        console.log(deg);
                         console.log('----------------------------------------------');
                         console.log(this.getBoundingClientRect());
                         var thisX = this.getBoundingClientRect().left - s.originCoordsX;
                         var thisY = this.getBoundingClientRect().top - s.originCoordsY;
                         console.log("(" + thisX + "," + thisY +")");
-//                        $(this).find('.spoke-coord').html("");
-//                        $(this).find('.spoke-coord').html("(" + thisX + "," + thisY +")");
                         
                         var radius = Math.sqrt((thisX * thisX) + (thisY * thisY));
                         
@@ -120,10 +116,6 @@
                         
                         s.prevRotation = degrees;
                         
-//                        rotate(rotationClass);
-//                        console.log("deg: " + degrees);
-                        
-
                     });
 
                 }
