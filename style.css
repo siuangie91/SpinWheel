@@ -21,6 +21,7 @@
 #wheel-container.origPos {
     transform: rotate(-90deg);
 }
+/*
 #wheel-container.posNeg210 {
     transform: rotate(-210deg);
 }
@@ -36,6 +37,7 @@
 #wheel-container.pos90 {
     transform: rotate(90deg);
 }
+*/
 .spoke {
     width: 0px;
     height: 0px;

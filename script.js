@@ -7,7 +7,8 @@
                     originLocSpan: $('#location'),
                     originCoords: document.getElementById('origin').getBoundingClientRect(),
                     originCoordsX: document.getElementById('origin').getBoundingClientRect().left,
-                    originCoordsY: document.getElementById('origin').getBoundingClientRect().top
+                    originCoordsY: document.getElementById('origin').getBoundingClientRect().top,
+                    prevRotation: -90
                 },
 
                 init: function () {
@@ -45,12 +46,13 @@
                 },
 
                 onClick: function () {
-                    function rotate(className) {
+                    function rotate(degrees) {
                         //rotate the wheel
                         console.log('spin');
                         
-                        s.container.removeClass();
-                        s.container.addClass(className);
+                        s.container.css({
+                            'transform': 'rotate('+ degrees +'deg)'
+                        });
                     }
 
                     var origin = -60; //each rotation is 60deg
@@ -61,6 +63,7 @@
 //                        rotate(deg);
 //                        
 //                        console.log(deg);
+                        console.log('----------------------------------------------');
                         console.log(this.getBoundingClientRect());
                         var thisX = this.getBoundingClientRect().left - s.originCoordsX;
                         var thisY = this.getBoundingClientRect().top - s.originCoordsY;
@@ -83,50 +86,39 @@
                         console.log("xTheta: " + xTheta);
                         console.log("yTheta: " + yTheta);
                         
-                        var rotationClass;
+                        console.log("prevRotation: " + s.prevRotation);
+                        
+                        var degrees;
                         
                         if(Math.round(xTheta) == 90 && Math.round(yTheta) == -90) {
-//                            degrees = -90;
-                            rotationClass = "origPos";
+                            degrees = s.prevRotation;
                         }
                         else {
                             if(Math.round(xTheta) == 30 && Math.round(yTheta) == 30) {
-//                                degrees = 90 - (xTheta + 300);
 //                                degrees = -210;
-                                rotate("origPos");
-                                rotationClass = "posNeg210";
-                                rotate(rotationClass);
+                                degrees = s.prevRotation - 120;
                             }
                             if(Math.round(xTheta) == 30 && Math.round(yTheta) == -30) {
-//                                degrees = 90 - (xTheta + 210);
 //                                degrees = -150;
-                                rotate("origPos");
-                                rotationClass = "posNeg150";
-                                rotate(rotationClass);
+                                degrees = s.prevRotation - 60;
                             }
                             if(Math.round(xTheta) == 150 && Math.round(yTheta) < 0) {
-//                                degrees = 120 - xTheta;
 //                                degrees = -30;
-                                rotate("origPos");
-                                rotationClass = "posNeg30";
-                                rotate(rotationClass);
+                                degrees = s.prevRotation + 60;
                             }
                             if(Math.round(xTheta) == 150 && Math.round(yTheta) > 0) {
-//                                degrees = 180 - xTheta;
 //                                degrees = 30;
-                                rotate("origPos");
-                                rotationClass = "pos30";
-                                rotate(rotationClass);
+                                degrees = s.prevRotation + 120;
                             }
                             if(Math.round(xTheta) == 90 && Math.round(yTheta) == 90) {
 //                                degrees = 90;
-                                rotate("origPos");
-                                rotationClass = "pos90";
-                                rotate(rotationClass);
+                                degrees = s.prevRotation - 180;
                             }
                         }
                         
+                        rotate(degrees);
                         
+                        s.prevRotation = degrees;
                         
 //                        rotate(rotationClass);
 //                        console.log("deg: " + degrees);
