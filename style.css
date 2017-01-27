@@ -1,0 +1,86 @@
+* {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+/*    margin: 0 auto;*/
+/*    margin-top: 100px;*/
+}
+
+#wheel-container {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #ff0000;
+    border-radius: 50%;
+    transition: all 800ms ease-in-out;
+}
+
+#wheel-container.origPos {
+    transform: rotate(-90deg);
+}
+#wheel-container.posNeg210 {
+    transform: rotate(-210deg);
+}
+#wheel-container.posNeg150 {
+    transform: rotate(-150deg);
+}
+#wheel-container.posNeg30 {
+    transform: rotate(-30deg);
+}
+#wheel-container.pos30 {
+    transform: rotate(30deg);
+}
+#wheel-container.pos90 {
+    transform: rotate(90deg);
+}
+.spoke {
+    width: 0px;
+    height: 0px;
+    overflow: visible;
+    background-color: #000;
+    position: absolute;
+}
+
+.spoke-color {
+    position: absolute;
+    left: -50px;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+    background-size: 150%;
+    overflow: visible;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.spoke:first-of-type .spoke-color {
+    background-color: green;
+}
+
+.spoke:nth-of-type(2) .spoke-color {
+    background-color: yellow;
+}
+.spoke:nth-of-type(3) .spoke-color {
+    background-color: blue;
+}
+.spoke:nth-of-type(4) .spoke-color {
+    background-color: purple;
+}
+.spoke:nth-of-type(5) .spoke-color {
+    background-color: orange;
+}
+.spoke:nth-of-type(6) .spoke-color {
+    background-color: gray;
+}
+
+#origin {
+    background: red;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top: 50%;
+    left: 50%;
+}
