@@ -3,7 +3,8 @@
             Wheel = {
                 settings: {
                     container: $('#wheel-container'),
-                    circle: $('#wheel-container').children(),
+                    circle: $('#wheel-container').children('.spoke'),
+                    spokeColor: $('.spoke-color'),
                     originLocSpan: $('#location'),
                     originCoords: document.getElementById('origin').getBoundingClientRect(),
                     originCoordsX: document.getElementById('origin').getBoundingClientRect().left,
@@ -91,31 +92,62 @@
                         }
                         else {
                             if(Math.round(xTheta) == 30 && Math.round(yTheta) == 30) {
-//                                degrees = -210;
                                 degrees = s.prevRotation - 120;
                             }
                             if(Math.round(xTheta) == 30 && Math.round(yTheta) == -30) {
-//                                degrees = -150;
                                 degrees = s.prevRotation - 60;
                             }
                             if(Math.round(xTheta) == 150 && Math.round(yTheta) < 0) {
-//                                degrees = -30;
                                 degrees = s.prevRotation + 60;
                             }
                             if(Math.round(xTheta) == 150 && Math.round(yTheta) > 0) {
-//                                degrees = 30;
                                 degrees = s.prevRotation + 120;
                             }
                             if(Math.round(xTheta) == 90 && Math.round(yTheta) == 90) {
-//                                degrees = 90;
                                 degrees = s.prevRotation - 180;
                             }
                         }
+                        
+                        s.spokeColor.removeClass('large medium small');
                         
                         rotate(degrees);
                         
                         s.prevRotation = degrees;
                         
+                        $(this).children('.spoke-color').addClass('large');
+                        //make the ones adjacent to the active one size medium
+                        $(this).prev('.spoke').children('.spoke-color').addClass('medium');
+                        $(this).next('.spoke').children('.spoke-color').addClass('medium');
+                        
+                        //makes the ones next to the adjacent ones size small
+                        $(this).prev('.spoke').prev('.spoke').children('.spoke-color').addClass('small');
+                        $(this).next('.spoke').next('.spoke').children('.spoke-color').addClass('small');
+                        
+                        //if active spoke is the last one, make the first one (which is adjacent) size medium
+                        if(s.circle.eq(5).children('.spoke-color').hasClass('large')) {
+                            s.circle.eq(0).children('.spoke-color').addClass('medium');
+                            //and make the 2nd one size small
+                            s.circle.eq(1).children('.spoke-color').addClass('small');
+                        }
+                        
+                        //if active spoke is index 0, make the last one (which is adjacent) size medium
+                        if(s.circle.eq(0).children('.spoke-color').hasClass('large')) {
+                            s.circle.eq(5).children('.spoke-color').addClass('medium');
+                            //and make the 4th one size small
+                            s.circle.eq(4).children('.spoke-color').addClass('small');
+                        }
+                        
+                        // if active spoke is index 1
+                        if(s.circle.eq(1).children('.spoke-color').hasClass('large')) {
+                            // make the 5th one size small
+                            s.circle.eq(5).children('.spoke-color').addClass('small');
+                        }
+
+                        // if active spoke is index 4
+                        if(s.circle.eq(4).children('.spoke-color').hasClass('large')) {
+                            // make index 0 size small
+                            s.circle.eq(0).children('.spoke-color').addClass('small');
+                        }
                     });
 
                 }

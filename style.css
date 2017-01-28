@@ -22,6 +22,9 @@
 }
 
 #wheel-container.origPos {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
 
@@ -31,6 +34,14 @@
     overflow: visible;
     background-color: #000;
     position: absolute;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.spoke, 
+.spoke * {
     -webkit-transition: all 800ms ease-in-out;
     -moz-transition: all 800ms ease-in-out;
     -ms-transition: all 800ms ease-in-out;
@@ -47,6 +58,18 @@
     overflow: visible;
     z-index: -1;
     border-radius: 50%;
+}
+
+.spoke-color.large {
+    transform: scale(1.75);
+}
+
+.spoke-color.medium {
+    transform: scale(1.5);
+}
+
+.spoke-color.small {
+    transform: scale(1.25);
 }
 
 .spoke:first-of-type .spoke-color {
