@@ -17,7 +17,8 @@
                     this.circle();
                     this.onClick();
                     
-                    this.settings.originLocSpan.html("("+this.settings.originCoordsX+","+this.settings.originCoordsY+")");
+                    //display (x,y) of origin on screen, truncated to 2 decimal places
+                    this.settings.originLocSpan.html("(" + s.originCoordsX.toString().substr(0,6) + "," + s.originCoordsY.toString().substr(0,6) + ")");
                     
                 },
 
