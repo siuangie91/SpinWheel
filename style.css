@@ -6,11 +6,13 @@
 .container {
     position: relative;
     width: 500px;
-/*    margin: 0 auto;*/
-/*    margin-top: 100px;*/
 }
 
 #wheel-container {
+    /*use margins to align the wheel container!!!!!*/
+    margin-top: 100px; 
+    margin-left: 100px; 
+    /*use margins to align the wheel container!!!!!*/
     width: 500px;
     height: 500px;
     border: 1px solid #ff0000;
@@ -28,6 +30,19 @@
     transform: rotate(-90deg);
 }
 
+#origin {
+    background: red;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    /* make original position at top left corner of the wheel container*/
+    top: 0;
+    left: 0;
+    /*use margins to center origin inside the wheel container */
+    margin-top: 250px; /* margin top = radius of the circle (half of the width or height of the wheel container) */
+    margin-left: 350px; /* margin left = left offset of the wheel container + radius of the circle */ 
+}
+
 .spoke {
     width: 0px;
     height: 0px;
@@ -40,8 +55,7 @@
     transform: rotate(90deg);
 }
 
-.spoke, 
-.spoke * {
+.spoke, .spoke * {
     -webkit-transition: all 800ms ease-in-out;
     -moz-transition: all 800ms ease-in-out;
     -ms-transition: all 800ms ease-in-out;
@@ -92,11 +106,3 @@
     background-color: gray;
 }
 
-#origin {
-    background: red;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    top: 50%;
-    left: 50%;
-}
