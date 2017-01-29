@@ -30,7 +30,7 @@
                                     height = wrapper.height(), //height of wrapper (if = width, is diameter)
                                     //step = the degree in radians of each sector
                                     step = (2 * Math.PI) / wrapper.children().length,
-                                    //x = radius + (radius * cos(step) = x pos) - 50% of the item's width
+                                    //position spoke based on its index, its center point, and the radius of the wheel
                                     x = Math.round(width / 2 + radius * Math.cos(count) - $(this).width() / 2),
                                     y = Math.round(height / 2 + radius * Math.sin(count) - $(this).height() / 2);
                             $(this).css({
@@ -64,13 +64,20 @@
                     var origin = -60; //each rotation is 60deg
                     s.circle.on('click', function () {
                         console.log('----------------------------------------------');
+                        // get (x,y) position of the clicked spoke
                         console.log(this.getBoundingClientRect());
                         var thisX = this.getBoundingClientRect().left - s.originCoordsX;
                         var thisY = this.getBoundingClientRect().top - s.originCoordsY;
                         console.log("(" + thisX + "," + thisY +")");
                         
+                        //find exact radius of circle using pythagorean theorem
+                        //radius^2 = hypotenuse^2 = x^2 + y^2 
                         var radius = Math.sqrt((thisX * thisX) + (thisY * thisY));
                         
+                        //Math.<trig fcn> only take parameters that are btwn -1 and 1
+                        //so divide the (x,y) positions by the radius to scale down to
+                        //a unit circle (circle with radius = 1)
+                        //and get the value of the scaled (x,y)
                         var unitX = thisX / (radius);
                         var unitY = thisY / (radius);
                         
@@ -78,6 +85,14 @@
                         
                         console.log("unit coords: (" + unitX + "," + unitY + ")");
                         
+                        //Get angle of the clicked spoke with respect to the origin
+                        //by performing inverse cosine and inverse sine.
+                        //Need to perform for both x and y
+                        //since x will only tell you if it's in left or right or side
+                        //and y will only tell you if it's in the top or bottom side.
+                        //cosine corresponds to x pos, sine corresponds to y pos.
+                        //acos() and asin() return values in radians,
+                        //so convert to degrees by multipying by 180/PI
                         var xTheta = Math.acos(unitX)*180/Math.PI;
                         var yTheta = Math.asin(unitY)*180/Math.PI;
                         
@@ -88,26 +103,45 @@
                         
                         var degrees;
                         
-                        if(Math.round(xTheta) == 90 && Math.round(yTheta) == -90) {
-                            degrees = s.prevRotation;
-                        }
-                        else {
-                            if(Math.round(xTheta) == 30 && Math.round(yTheta) == 30) {
-                                degrees = s.prevRotation - 120;
+                        //calculate rotation for when clicked spoke is on the axis of symmetry
+                        if(Math.round(xTheta) == 90) {
+                            //if clicked spoke is at the top (active spoke)
+                            if(Math.round(yTheta) == -90) {
+                                degrees = s.prevRotation;
                             }
-                            if(Math.round(xTheta) == 30 && Math.round(yTheta) == -30) {
-                                degrees = s.prevRotation - 60;
-                            }
-                            if(Math.round(xTheta) == 150 && Math.round(yTheta) < 0) {
-                                degrees = s.prevRotation + 60;
-                            }
-                            if(Math.round(xTheta) == 150 && Math.round(yTheta) > 0) {
-                                degrees = s.prevRotation + 120;
-                            }
-                            if(Math.round(xTheta) == 90 && Math.round(yTheta) == 90) {
+                            //if clicked spoke is at the bottom (base)
+                            else { 
                                 degrees = s.prevRotation - 180;
                             }
                         }
+
+                        //calculate rotation for when clicked spoke is on the right side (xTheta = 30)
+                        if(Math.round(xTheta) - 90 < 0) {
+                            //if clicked spoke is at the top right
+                            if(Math.round(yTheta) < 0) { //yTheta = -30
+                                //rotate 60deg CCW
+                                degrees = s.prevRotation - 60;
+                            }
+                            //if clicked spoke is at the bottom right
+                            else { //yTheta = 30
+                                //rotate 120deg CCW
+                                degrees = s.prevRotation - 120;
+                            }
+                        }
+                        //calculate rotation for when clicked spoke is on the left side (xTheta = 150)
+                        if(Math.round(xTheta) - 90 > 0) {
+                            //if clicked spoke is at the top left
+                            if(Math.round(yTheta) < 0) { //yTheta = -30
+                                //rotate 60deg CW
+                                degrees = s.prevRotation + 60;
+                            }
+                            //if clicked spoke is at the bottom left
+                            else { //yTheta = 30
+                                //rotate 120deg CW
+                                degrees = s.prevRotation + 120;    
+                            }
+                        }
+
                         
                         s.spokeColor.removeClass('large medium small');
                         
