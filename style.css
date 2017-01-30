@@ -23,6 +23,11 @@
     transition: all 800ms ease-in-out;
 }
 
+#wheel-container.noTransition {
+    -webkit-transition: all 0ms ease-in-out !important;
+    transition: all 0ms ease-in-out !important;
+}
+
 #wheel-container.origPos {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -49,6 +54,7 @@
     overflow: visible;
     background-color: #000;
     position: absolute;
+    cursor: pointer;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -69,6 +75,7 @@
     width: 100px;
     height: 100px;
     background-size: 150%;
+    background: #f37053;
     overflow: visible;
     z-index: -1;
     border-radius: 50%;
@@ -87,22 +94,21 @@
 }
 
 .spoke:first-of-type .spoke-color {
-    background-color: green;
+    background: yellow;
 }
-
 .spoke:nth-of-type(2) .spoke-color {
-    background-color: yellow;
+    background: blue;
 }
 .spoke:nth-of-type(3) .spoke-color {
-    background-color: blue;
+    background: purple;
 }
 .spoke:nth-of-type(4) .spoke-color {
-    background-color: purple;
+    background: gray;
 }
 .spoke:nth-of-type(5) .spoke-color {
-    background-color: orange;
+    background: green;
 }
 .spoke:nth-of-type(6) .spoke-color {
-    background-color: gray;
+    background: orange;
 }
 

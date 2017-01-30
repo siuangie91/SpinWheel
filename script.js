@@ -44,13 +44,13 @@
                     
                     //position the circles the main wheel
                     position($('#wheel-container').width()/2, s.container);
-
+                    
                 },
-
+                
                 onClick: function () {
                     function rotate(degrees) {
                         //rotate the wheel
-                        console.log('spin');
+//                        console.log('spin');
                         
                         s.container.css({
                             'transform': 'rotate('+ degrees +'deg)'
@@ -60,15 +60,24 @@
                             'transform': 'rotate('+ -degrees +'deg)'
                         });
                     }
+                    
+                    function resetDegrees() {
+                        s.prevRotation = -90;
+                    }
+                    
+                    resetDegrees();
 
                     var origin = -60; //each rotation is 60deg
                     s.circle.on('click', function () {
+                        
+                        s.container.removeClass('noTransition');
+                        
                         console.log('----------------------------------------------');
                         // get (x,y) position of the clicked spoke
-                        console.log(this.getBoundingClientRect());
+//                        console.log(this.getBoundingClientRect());
                         var thisX = this.getBoundingClientRect().left - s.originCoordsX;
                         var thisY = this.getBoundingClientRect().top - s.originCoordsY;
-                        console.log("(" + thisX + "," + thisY +")");
+//                        console.log("(" + thisX + "," + thisY +")");
                         
                         //find exact radius of circle using pythagorean theorem
                         //radius^2 = hypotenuse^2 = x^2 + y^2 
@@ -81,9 +90,9 @@
                         var unitX = thisX / (radius);
                         var unitY = thisY / (radius);
                         
-                        console.log(radius);
+//                        console.log(radius);
                         
-                        console.log("unit coords: (" + unitX + "," + unitY + ")");
+//                        console.log("unit coords: (" + unitX + "," + unitY + ")");
                         
                         //Get angle of the clicked spoke with respect to the origin
                         //by performing inverse cosine and inverse sine.
@@ -96,8 +105,8 @@
                         var xTheta = Math.acos(unitX)*180/Math.PI;
                         var yTheta = Math.asin(unitY)*180/Math.PI;
                         
-                        console.log("xTheta: " + xTheta);
-                        console.log("yTheta: " + yTheta);
+//                        console.log("xTheta: " + xTheta);
+//                        console.log("yTheta: " + yTheta);
                         
                         console.log("prevRotation: " + s.prevRotation);
                         
@@ -141,13 +150,17 @@
                                 degrees = s.prevRotation + 120;    
                             }
                         }
-
                         
+                        //remove all size settings
                         s.spokeColor.removeClass('large medium small');
                         
+                        //rotate wheel
                         rotate(degrees);
                         
+                        //set s.prevRotation to current degrees
                         s.prevRotation = degrees;
+                        
+                        console.log('new s.prevRotation: ' + s.prevRotation);
                         
                         $(this).children('.spoke-color').addClass('large');
                         //make the ones adjacent to the active one size medium
@@ -167,6 +180,10 @@
                         
                         //if active spoke is index 0, make the last one (which is adjacent) size medium
                         if(s.circle.eq(0).children('.spoke-color').hasClass('large')) {
+                            setTimeout(function() {
+                                s.container.trigger('reset');
+                            }, 850);
+                            
                             s.circle.eq(5).children('.spoke-color').addClass('medium');
                             //and make the 4th one size small
                             s.circle.eq(4).children('.spoke-color').addClass('small');
@@ -185,6 +202,15 @@
                         }
                     });
 
+                    s.container.on('reset', function() {
+                        //add noTransition classs to container so that user does not see reset animation
+                        s.container.addClass('noTransition');
+                        //remove the style attribute altogether to clear degrees
+                        s.container.removeAttr('style');
+                        //reset s.prevRotation to -90;
+                        resetDegrees();
+                        console.log('reset');
+                    })
                 }
             };
 
