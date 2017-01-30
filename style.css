@@ -62,6 +62,7 @@
 }
 
 .spoke, .spoke * {
+    font-size: 26px;
     -webkit-transition: all 800ms ease-in-out;
     -moz-transition: all 800ms ease-in-out;
     -ms-transition: all 800ms ease-in-out;
