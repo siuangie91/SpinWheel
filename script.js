@@ -187,6 +187,7 @@
 
                             //if active spoke is index 0, make the last one (which is adjacent) size medium
                             if(s.circle.eq(0).children('.spoke-color').hasClass('large')) {
+                                //trigger rotation reset so that degrees doesn't become too large or too negative
                                 s.container.trigger('reset');
 
                                 s.circle.eq(5).children('.spoke-color').addClass('medium');
