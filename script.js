@@ -222,6 +222,8 @@
                             s.container.addClass('noTransition');
                             //remove the style attribute altogether to clear degrees
                             s.container.removeAttr('style');
+                            //reset rotation on spoke content as well
+                            s.circle.css('transform', 'rotate(90deg)');
                             //reset s.prevRotation to -90;
                             resetDegrees();
                             console.log('reset');

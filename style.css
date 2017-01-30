@@ -23,7 +23,9 @@
     transition: all 800ms ease-in-out;
 }
 
-#wheel-container.noTransition {
+#wheel-container.noTransition,
+#wheel-container.noTransition .spoke, 
+#wheel-container.noTransition .spoke * {
     -webkit-transition: all 0ms ease-in-out !important;
     transition: all 0ms ease-in-out !important;
 }
