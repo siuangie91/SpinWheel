@@ -63,8 +63,8 @@
                         });
                     }
                     
-                    function resetDegrees() {
-                        s.prevRotation = -90;
+                    function resetDegrees(deg) {
+                        s.prevRotation = deg;
                     }
                     
 //                    resetDegrees();
@@ -178,18 +178,12 @@
                             $(this).prev('.spoke').prev('.spoke').children('.spoke-color').addClass('small');
                             $(this).next('.spoke').next('.spoke').children('.spoke-color').addClass('small');
 
-                            //if active spoke is the last one, make the first one (which is adjacent) size medium
-                            if(s.circle.eq(5).children('.spoke-color').hasClass('large')) {
-                                s.circle.eq(0).children('.spoke-color').addClass('medium');
-                                //and make the 2nd one size small
-                                s.circle.eq(1).children('.spoke-color').addClass('small');
-                            }
-
-                            //if active spoke is index 0, make the last one (which is adjacent) size medium
+                            
                             if(s.circle.eq(0).children('.spoke-color').hasClass('large')) {
                                 //trigger rotation reset so that degrees doesn't become too large or too negative
-                                s.container.trigger('reset');
+                                s.container.trigger('reset', [-90]);
 
+                                //if active spoke is index 0, make the last one (which is adjacent) size medium
                                 s.circle.eq(5).children('.spoke-color').addClass('medium');
                                 //and make the 4th one size small
                                 s.circle.eq(4).children('.spoke-color').addClass('small');
@@ -197,14 +191,36 @@
 
                             // if active spoke is index 1
                             if(s.circle.eq(1).children('.spoke-color').hasClass('large')) {
+                                s.container.trigger('reset', [-150]);
+                                
                                 // make the 5th one size small
                                 s.circle.eq(5).children('.spoke-color').addClass('small');
                             }
-
+                            
+                            if(s.circle.eq(2).children('.spoke-color').hasClass('large')) {
+                                s.container.trigger('reset', [-210]);
+                            }
+                            
+                            if(s.circle.eq(3).children('.spoke-color').hasClass('large')) {
+                                s.container.trigger('reset', [-270]);
+                            }                         
+                            
                             // if active spoke is index 4
                             if(s.circle.eq(4).children('.spoke-color').hasClass('large')) {
+                                s.container.trigger('reset', [30]);
+                                
                                 // make index 0 size small
                                 s.circle.eq(0).children('.spoke-color').addClass('small');
+                            }
+                            
+                            
+                            if(s.circle.eq(5).children('.spoke-color').hasClass('large')) {
+                                s.container.trigger('reset', [-30]);
+                                
+                                //if active spoke is the last one, make the first one (which is adjacent) size medium
+                                s.circle.eq(0).children('.spoke-color').addClass('medium');
+                                //and make the 2nd one size small
+                                s.circle.eq(1).children('.spoke-color').addClass('small');
                             }
                             
                             //wait until anim is finished before allowing click again
@@ -216,7 +232,7 @@
                         
                     });
 
-                    s.container.on('reset', function() {
+                    s.container.on('reset', function(evt, deg) {
                         
                         setTimeout(function() {
                             //add noTransition classs to container so that user does not see reset animation
@@ -224,9 +240,10 @@
                             //remove the style attribute altogether to clear degrees
                             s.container.removeAttr('style');
                             //reset rotation on spoke content as well
-                            s.circle.css('transform', 'rotate(90deg)');
+                            rotate(deg);
+//                            s.circle.css('transform', 'rotate(' + -deg + 'deg)');
                             //reset s.prevRotation to -90;
-                            resetDegrees();
+                            resetDegrees(deg);
                             console.log('reset');
                         }, 800);
                         
