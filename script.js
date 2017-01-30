@@ -71,8 +71,10 @@
 
                     var origin = -60; //each rotation is 60deg
                     s.circle.on('click', function () {
-                        
+                        //only spin if not already spinning
                         if(!s.isSpinning) {
+                            
+                            //is now spinning
                             s.isSpinning = true;
                             
                             s.container.removeClass('noTransition');
@@ -204,6 +206,7 @@
                                 s.circle.eq(0).children('.spoke-color').addClass('small');
                             }
                             
+                            //wait until anim is finished before allowing click again
                             setTimeout(function() {
                                 s.isSpinning = false;
                             },800);
