@@ -10,7 +10,9 @@
                     originCoordsX: document.getElementById('origin').getBoundingClientRect().left,
                     originCoordsY: document.getElementById('origin').getBoundingClientRect().top,
                     prevRotation: -90, //-90deg is the pre-existing rotation
-                    isSpinning: false
+                    isSpinning: false,
+                    varyRotationSpeed: true,
+                    rotationSpeed: 800 //default rotation speed for when varyRotationSpeed = false
                 },
 
                 init: function () {
@@ -51,8 +53,9 @@
                 onClick: function () {
                     function rotate(degrees) {
                         //rotate the wheel
-//                        console.log('spin');
                         s.isSpinning = true;
+                        
+                        console.log('spinning');
                         
                         s.container.css({
                             'transform': 'rotate('+ degrees +'deg)'
@@ -67,8 +70,16 @@
                         s.prevRotation = deg;
                     }
                     
-//                    resetDegrees();
-
+                    function setRotationSpeed(speedInMs) {
+                        if(s.varyRotationSpeed) {
+                            s.container.css('transition-duration', speedInMs + 'ms');
+                            s.circle.css('transition-duration', speedInMs + 'ms');
+                            s.spokeColor.css('transition-duration', speedInMs + 'ms');
+                            
+                            s.rotationSpeed = speedInMs;
+                        }
+                    }
+                    
                     var origin = -60; //each rotation is 60deg
                     s.circle.on('click', function () {
                         //only spin if not already spinning
@@ -112,8 +123,8 @@
                             var xTheta = Math.acos(unitX)*180/Math.PI;
                             var yTheta = Math.asin(unitY)*180/Math.PI;
 
-    //                        console.log("xTheta: " + xTheta);
-    //                        console.log("yTheta: " + yTheta);
+                            console.log("xTheta: " + xTheta);
+                            console.log("yTheta: " + yTheta);
 
                             console.log("prevRotation: " + s.prevRotation);
 
@@ -128,6 +139,7 @@
                                 //if clicked spoke is at the bottom (base)
                                 else { 
                                     degrees = s.prevRotation - 180;
+                                    setRotationSpeed(1600);
                                 }
                             }
 
@@ -137,11 +149,13 @@
                                 if(Math.round(yTheta) < 0) { //yTheta = -30
                                     //rotate 60deg CCW
                                     degrees = s.prevRotation - 60;
+                                    setRotationSpeed(800);
                                 }
                                 //if clicked spoke is at the bottom right
                                 else { //yTheta = 30
                                     //rotate 120deg CCW
                                     degrees = s.prevRotation - 120;
+                                    setRotationSpeed(1200);
                                 }
                             }
                             //calculate rotation for when clicked spoke is on the left side (xTheta = 150)
@@ -150,11 +164,13 @@
                                 if(Math.round(yTheta) < 0) { //yTheta = -30
                                     //rotate 60deg CW
                                     degrees = s.prevRotation + 60;
+                                    setRotationSpeed(800);
                                 }
                                 //if clicked spoke is at the bottom left
                                 else { //yTheta = 30
                                     //rotate 120deg CW
                                     degrees = s.prevRotation + 120;    
+                                    setRotationSpeed(1200);
                                 }
                             }
 
@@ -226,26 +242,32 @@
                             //wait until anim is finished before allowing click again
                             setTimeout(function() {
                                 s.isSpinning = false;
-                            },800);
+                                console.log("rotationspeed: " + s.rotationSpeed);
+                                console.log('not spinning');
+                            },s.rotationSpeed);
                             
                         }
                         
                     });
 
                     s.container.on('reset', function(evt, deg) {
-                        
                         setTimeout(function() {
                             //add noTransition classs to container so that user does not see reset animation
                             s.container.addClass('noTransition');
                             //remove the style attribute altogether to clear degrees
                             s.container.removeAttr('style');
-                            //reset rotation on spoke content as well
-                            rotate(deg);
-//                            s.circle.css('transform', 'rotate(' + -deg + 'deg)');
-                            //reset s.prevRotation to -90;
+                            //reset rotation on spoke and spoke content as well
+                            s.container.css({
+                                'transform': 'rotate('+ deg +'deg)'
+                            });
+
+                            s.container.find('.spoke').css({
+                                'transform': 'rotate('+ -deg +'deg)'
+                            });
+                            //reset s.prevRotation;
                             resetDegrees(deg);
                             console.log('reset');
-                        }, 800);
+                        }, s.rotationSpeed);
                         
                     })
                 }
