@@ -256,7 +256,8 @@
                             s.container.addClass('noTransition');
                             //remove the style attribute altogether to clear degrees
                             s.container.removeAttr('style');
-                            //reset rotation on spoke and spoke content as well
+                            //reset rotation on spoke and spoke content as well without
+                            //calling rotate() because no need to check if s.isSpinning = true
                             s.container.css({
                                 'transform': 'rotate('+ deg +'deg)'
                             });
