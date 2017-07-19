@@ -1,47 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Wheel Spin</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-<body>
-    
-    <div class="container">
-        <div id="wheel-container" class="origPos">
-            <div class="spoke">
-                <span>0 <span class="spoke-coord"></span></span>
-                <div class="spoke-color large"></div>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <link href="style.css" rel="stylesheet" media="all" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body class="protocol">
+        <div class="detect desktop"></div>
+        <div class="detect desktop"></div>
+        <div class="detect mobile"></div>
+        <div id="pp-wrapper">
+            <div class="pp-content-container">
+                <div class="pp-accordion">
+                   <div class="pp-header-bkgd"></div>
+                    <div class="pp-accord active" data-name="content1">
+                        <div class="pp-header">
+                            <h2>CONTENT 1 HEADER</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>Short ribs tail rump, pancetta swine alcatra fatback ham hock cow pork chop corned beef ball tip. Kevin picanha short ribs, alcatra ground round filet mignon corned beef boudin. Andouille bresaola cow shank ground round kielbasa alcatra. </span></li>
+                                <li><span>Tri-tip venison flank ham hock. Alcatra sausage frankfurter kevin cow boudin, hamburger jerky brisket meatloaf filet mignon. Pork loin tail landjaeger, beef ribs tenderloin shankle tongue.</span></li>
+                                <li><span><strong>Tail alcatra tenderloin bacon, doner t-bone burgdoggen capicola ground round chuck.</strong></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pp-accord right upper" data-name="content2">
+                        <div class="pp-header">
+                            <h2>CONTENT 2 HEADER</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>Bacon ipsum dolor amet turkey cow meatloaf shoulder.</span></li>
+                                <li><span> Beef ribs pastrami capicola turducken ham hock bacon chuck shankle pancetta short loin pork chop ham bresaola. Biltong spare ribs beef doner jerky, drumstick turkey pastrami short ribs flank chuck shank short loin shankle.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pp-accord right lower" data-name="content3">
+                        <div class="pp-header">
+                            <h2>Content 3 Header</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>Jerky hamburger short ribs tail chuck doner. T-bone short ribs picanha frankfurter turducken drumstick sausage pork chop bresaola. Turducken shank capicola pancetta pig cupim chuck tenderloin shoulder meatloaf pork belly rump ham.</span>
+                                    <ul class="pp-accord-sublist">
+                                        <li><span>Beef tail ground round tri-tip ham jowl capicola salami andouille boudin swine spare ribs pastrami.</span></li>
+                                    </ul>
+                                </li>
+                                <li><span>Shank jerky pig picanha porchetta turducken bresaola tenderloin.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pp-accord bottom" data-name="content4">
+                        <div class="pp-header">
+                            <h2>Content 4 Header</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>TRUVADA FOR PrEP must only be prescribed as part of a comprehensive prevention strategy</span></li>
+                                <li><span>Counsel individuals on how to consistently and correctly use condoms, on safe sex practices, and on the importance of knowing their HIV status and that of their partner(s)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pp-accord left lower" data-name="content5">
+                        <div class="pp-header">
+                            <h2>Content 5 Header</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>Kielbasa leberkas meatloaf venison tri-tip drumstick. Picanha spare ribs ribeye bacon burgdoggen hamburger, rump chuck cow ground round jerky bresaola shank tongue. Chicken burgdoggen rump tri-tip pork belly. </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pp-accord left upper" data-name="content6">
+                        <div class="pp-header">
+                            <h2>Content 6 Header</h2>
+                        </div>
+                        <div class="pp-accord-list-container">
+                            <ul class="pp-accord-list">
+                                <li><span>Swine ball tip tongue chuck, cow beef ribs kevin jowl spare ribs. Beef tail ground round tri-tip ham jowl capicola salami andouille boudin swine spare ribs pastrami.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- wheel -->
+                <div class="pp-container switcher">
+                    <div id="pp-wheel-container" class="pp-origPos">
+                        <div class="pp-spoke content-switch" data-content="content1">
+                            <div class="pp-spoke-color large"></div>
+                        </div>
+                        <div class="pp-spoke content-switch" data-content="content2">
+                            <div class="pp-spoke-color medium"></div>
+                        </div>
+                        <div class="pp-spoke content-switch" data-content="content3">
+                            <div class="pp-spoke-color small"></div>
+                        </div>
+                        <div class="pp-spoke content-switch" data-content="content4">
+                            <div class="pp-spoke-color"></div>
+                        </div>
+                        <div class="pp-spoke content-switch" data-content="content5">
+                            <div class="pp-spoke-color small"></div>
+                        </div>
+                        <div class="pp-spoke content-switch" data-content="content6">
+                            <div class="pp-spoke-color medium"></div>
+                        </div>
+                    </div>
+                    <div class="pp-wheel-bkgd"></div>
+                    <div id="pp-origin"><!-- DO __NOT__ REMOVE ORIGIN ELEM -->
+                        <span>X_Origin <span id="pp-location"></span></span>
+                    </div>
+                </div>
             </div>
-            <div class="spoke">
-                <span>1 <span class="spoke-coord"></span></span>
-                <div class="spoke-color medium"></div>
-            </div>
-            <div class="spoke">
-                <span>2 <span class="spoke-coord"></span></span>
-                <div class="spoke-color small"></div>
-            </div>
-            <div class="spoke">
-                <span>3 <span class="spoke-coord"></span></span>
-                <div class="spoke-color"></div>
-            </div>
-            <div class="spoke">
-                <span>4 <span class="spoke-coord"></span></span>
-                <div class="spoke-color small"></div>
-            </div>
-            <div class="spoke">
-                <span>5 <span class="spoke-coord"></span></span>
-                <div class="spoke-color medium"></div>
-            </div>
+
         </div>
         
-        <div id="origin">
-            <span>X_Origin <span id="location"></span></span>
-        </div>
-    </div>
-    
-
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
