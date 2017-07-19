@@ -14,6 +14,6 @@ The active icon should be the largest and the icon at the bottom should be small
 
 ## Updated ##
 
-The wheel is now responsive and corresponding content is shown when icon is clicked. Below 900px, the interface collapses into accordion mode.
+The wheel is now responsive and corresponding content is shown when icon is clicked. Below 800px, the interface collapses into accordion mode.
 
 [![Screen Shot 2017-01-28 at 3.08.28 PM.png](https://bytebucket.org/siuangie91/spinwheel/raw/b5a9abb4ad5eec14952d71b2bcaec3edcc155a52/screenshot.png?token=7cea3f3535e2346fddd7d3e9ce0ec3752f64e4ce)](http://projects.angiesiudevworks.com/spinwheel/)
