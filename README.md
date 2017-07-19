@@ -18,6 +18,4 @@ The wheel is now responsive and corresponding content is shown when icon is clic
 
 [Demo: https://youtu.be/lDdyOhb8ino](https://youtu.be/lDdyOhb8ino)
 
-[![Screen Shot 2017-01-28 at 3.08.28 PM.png](https://bitbucket.org/repo/8xrbbM/images/183446850-Screen%20Shot%202017-01-28%20at%203.08.28%20PM.png)](https://youtu.be/lDdyOhb8ino)
-=======
 [![Screen Shot 2017-01-28 at 3.08.28 PM.png](https://bytebucket.org/siuangie91/spinwheel/raw/c04a23ef31c29d825096f97ad6d24912df0dd4c1/screenshot.png?token=d3c3c57017ff9390a803e785de85ebca1a463189)](http://projects.angiesiudevworks.com/spinwheel/)
