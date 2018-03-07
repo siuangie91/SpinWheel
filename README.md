@@ -1,5 +1,7 @@
 # Wheel Spin # 
-[![status](https://img.shields.io/badge/build-complete%20%7C%20passing-brightgreen.svg)](http://projects.angiesiudevworks.com/spinwheel/)
+![status](https://img.shields.io/badge/status-COMPLETE-brightgreen.svg)
+![tests](https://img.shields.io/badge/tests-PASSED-brightgreen.svg)
+![build](https://img.shields.io/badge/build-PASSING-brightgreen.svg)
 
 ***Summary:*** *Rotate wheel via the path of least resistance (i.e., counterclockwise or clockwise, whichever path is shortest) such that the clicked icon is at the top.*
 
