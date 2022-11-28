@@ -1,5 +1,7 @@
 # Trigonometric Wheel Spin # 
 
+> ### **:bangbang: This project is archived and no longer maintained.**
+
 ***Summary:*** *Rotate wheel via the path of least resistance (i.e., counterclockwise or clockwise, whichever path is shortest) such that the clicked icon is at the top.*
 
 Rotate wheel via the path of least resistance (i.e., counterclockwise or clockwise, whichever path is shortest) such that the clicked icon is at the top. There is trigonometry involved! (This is a really old project that I was really proud of still 😊)
