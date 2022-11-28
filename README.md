@@ -1,4 +1,4 @@
-# Wheel Spin # 
+# Trigonometric Wheel Spin # 
 
 ***Summary:*** *Rotate wheel via the path of least resistance (i.e., counterclockwise or clockwise, whichever path is shortest) such that the clicked icon is at the top.*
 
