@@ -1,142 +1,147 @@
 * {
-	box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #pp-wrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .pp-content-container {
-    width: 95%;
-    margin: 0 auto;
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* ----------- .detect <div>s ------------- */
 .detect {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    display: none;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: none;
 }
 
 @media (max-width: 799px) {
-    .detect.mobile {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-        display: block;
-    }
+  .detect.mobile {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+  }
 }
 
 @media (max-width: 900px) and (min-width: 800px) {
-    .detect.tablet {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-        display: block;
-    }
+  .detect.tablet {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+  }
 }
 
 @media all and (min-width: 901px) {
-    .detect.desktop {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-        display: block;
-    }
+  .detect.desktop {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+  }
 }
 /* --------------- wheel ----------------- */
 .pp-container {
-    position: relative;
-    width: 100%;
-    z-index: 20;
+  position: relative;
+  width: 100%;
+  z-index: 20;
 }
 
 .pp-container:before {
-    content: "";
-    display: block;
-    background: url(../images/caret.png) center center no-repeat;
-    background-size: 50% auto;
-    position: absolute;
-    width: 109px;
-    height: 58px;
-    top: -90px;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+  content: '';
+  display: block;
+  background: url(../images/caret.png) center center no-repeat;
+  background-size: 50% auto;
+  position: absolute;
+  width: 109px;
+  height: 58px;
+  top: -90px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
 #pp-wheel-container {
-    /*use margins to align the wheel container!!!!!*/
-    margin-top: 250px;
-    margin-left: calc((100% - 186px) / 2);
-    /*use margins to align the wheel container!!!!!*/
-    width: 186px;
-    height: 186px;
-    border: 1px solid black;
-    border-radius: 50%;
-    -webkit-transition: all 800ms ease-in-out;
-    -moz-transition: all 800ms ease-in-out;
-    transition: all 800ms ease-in-out;
+  /*use margins to align the wheel container!!!!!*/
+  margin-top: 250px;
+  margin-left: calc((100% - 186px) / 2);
+  /*use margins to align the wheel container!!!!!*/
+  width: 186px;
+  height: 186px;
+  border: 1px solid black;
+  border-radius: 50%;
+  -webkit-transition: all 800ms ease-in-out;
+  -moz-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
 }
 
 #pp-wheel-container.noTransition,
 #pp-wheel-container.noTransition .pp-spoke,
 #pp-wheel-container.noTransition .pp-spoke * {
-    -webkit-transition: all 0ms ease-in-out !important;
-    -moz-transition: all 0ms ease-in-out !important;
-    transition: all 0ms ease-in-out !important;
+  -webkit-transition: all 0ms ease-in-out !important;
+  -moz-transition: all 0ms ease-in-out !important;
+  transition: all 0ms ease-in-out !important;
 }
 
 #pp-wheel-container.pp-origPos {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
-#pp-wheel-container, #pp-wheel-container * {
-    -webkit-backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
+#pp-wheel-container,
+#pp-wheel-container * {
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 #pp-origin {
-    background: transparent;
-/*    color: rgba(255,255,255,0);*/
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    /* make original position at top left corner of the wheel container*/
-    top: 0;
-    left: 0;
-    /*use margins to center origin inside the wheel container */
-    margin-top: calc(186px / 2); /* margin top = radius of the circle (half of the width or height of the wheel container) */
-    margin-left: calc((100% - 186px) / 2 + (186px / 2)); /* margin left = left offset of the wheel container + radius of the circle */
+  background: transparent;
+  /*    color: rgba(255,255,255,0);*/
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  /* make original position at top left corner of the wheel container*/
+  top: 0;
+  left: 0;
+  /*use margins to center origin inside the wheel container */
+  margin-top: calc(
+    186px / 2
+  ); /* margin top = radius of the circle (half of the width or height of the wheel container) */
+  margin-left: calc(
+    (100% - 186px) / 2 + (186px / 2)
+  ); /* margin left = left offset of the wheel container + radius of the circle */
 }
 
 .pp-spoke {
-/*    use top and left positioning so that if positioning script lags, the spokes will be distributed from the origin*/
-    top: 92px;
-    left: 92px;
-    width: 0px;
-    height: 0px;
-    overflow: visible;
-    background-color: #000;
-    position: absolute;
-    cursor: pointer;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-/*    if no animation on distribution of spokes desired, comment in*/
-/*
+  /*    use top and left positioning so that if positioning script lags, the spokes will be distributed from the origin*/
+  top: 92px;
+  left: 92px;
+  width: 0px;
+  height: 0px;
+  overflow: visible;
+  background-color: #000;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*    if no animation on distribution of spokes desired, comment in*/
+  /*
     -webkit-transition: transform 800ms ease-in-out;
     -moz-transition: transform 800ms ease-in-out;
     transition: transform 800ms ease-in-out;
@@ -146,286 +151,256 @@ body {
 /* if no animation on distribution of spokes desired, comment out .spoke */
 .pp-spoke,
 .pp-spoke * {
-    -webkit-transition: all 800ms ease-in-out;
-    -moz-transition: all 800ms ease-in-out;
-    transition: all 800ms ease-in-out;
+  -webkit-transition: all 800ms ease-in-out;
+  -moz-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
 }
 
 .pp-spoke span {
-    color: #fff;
-    text-shadow: 0 0 5px #000;
-    font-size: 1.5em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  font-size: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .pp-spoke-color {
-    position: absolute;
-    left: -24px;
-    top: -24px;
-    width: 48px;
-    height: 48px;
-    background-size: 150%;
-    background: #f37053;
-    overflow: visible;
-    z-index: -1;
-    border-radius: 50%;
+  position: absolute;
+  left: -24px;
+  top: -24px;
+  width: 48px;
+  height: 48px;
+  background-size: 150%;
+  background: #f37053;
+  overflow: visible;
+  z-index: -1;
+  border-radius: 50%;
 }
 
 .pp-spoke-color.large {
-    -webkit-transform: scale(1.75);
-    -moz-transform: scale(1.75);
-    transform: scale(1.75);
+  -webkit-transform: scale(1.75);
+  -moz-transform: scale(1.75);
+  transform: scale(1.75);
 }
 
 .pp-spoke-color.medium {
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 .pp-spoke-color.small {
-    -webkit-transform: scale(1.25);
-    -moz-transform: scale(1.25);
-    transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  transform: scale(1.25);
 }
 
 .pp-spoke:first-of-type .pp-spoke-color {
-    background: red;
-    background-size: auto 27px;
+  background: red;
+  background-size: auto 27px;
 }
 .pp-spoke:nth-of-type(2) .pp-spoke-color {
-    background: green;
-    background-size: auto 25px;
+  background: green;
+  background-size: auto 25px;
 }
 .pp-spoke:nth-of-type(3) .pp-spoke-color {
-    background: blue;
-    background-size: auto 23px;
+  background: blue;
+  background-size: auto 23px;
 }
 .pp-spoke:nth-of-type(4) .pp-spoke-color {
-    background: orange;
-    background-size: auto 22px;
+  background: orange;
+  background-size: auto 22px;
 }
 .pp-spoke:nth-of-type(5) .pp-spoke-color {
-    background: magenta;
-    background-size: auto 23px;
+  background: magenta;
+  background-size: auto 23px;
 }
 .pp-spoke:nth-of-type(6) .pp-spoke-color {
-    background: yellow;
-    background-size: auto 25px;
+  background: yellow;
+  background-size: auto 25px;
 }
 
 .pp-wheel-bkgd {
-    position: absolute;
-    top: -5px;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 185px;
+  position: absolute;
+  top: -5px;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 185px;
 }
 
 /************* ACCORDION ****************/
 .pp-accordion {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translate(-50%,0);
-    -moz-transform: translate(-50%,0);
-    transform: translate(-50%,0);
-    width: 95%;
-    height: 550px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  width: 95%;
+  height: 550px;
 }
 
 .pp-accord {
-    margin-bottom: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .pp-accordion > .pp-header-bkgd {
-    background: #2d547b;
-    border-radius: 100px;
-    height: 55px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    opacity: 1 !important;
+  background: #2d547b;
+  border-radius: 100px;
+  height: 55px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 1 !important;
 }
 
-
 .pp-accord .pp-header {
-    background: #2d547b;
-    color: #fff;
-    border-radius: 100px;
-    height: 55px;
-    text-align: center;
-    position: relative;
-    cursor: pointer;
-    text-transform: uppercase;
+  background: #2d547b;
+  color: #fff;
+  border-radius: 100px;
+  height: 55px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 .pp-accord .pp-header h2 {
-    position: absolute;
-    display: block;
-    width: 70%;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+  position: absolute;
+  display: block;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .pp-accord:not(.active) .pp-header h2 {
-    width: 80%;
+  width: 80%;
 }
 
 .pp-accord .pp-accord-list {
-    width: 85%;
-    color: #ef7666;
-    margin: 0 auto;
-    padding: 0.5em 0 1em 1.2em;
-    line-height: 1;
+  width: 85%;
+  color: #ef7666;
+  margin: 0 auto;
+  padding: 0.5em 0 1em 1.2em;
+  line-height: 1;
 }
 
 .pp-accord .pp-accord-list li {
-    margin: 0;
-    margin-bottom: 4px;
+  margin: 0;
+  margin-bottom: 4px;
 }
 
 .pp-accord .pp-accord-list li span {
-    color: #636466;
-    position: relative;
-    left: -5px;
+  color: #636466;
+  position: relative;
+  left: -5px;
 }
 
 .pp-accord .pp-accord-list ul {
-    color: #5091cd;
-    margin-top: 4px;
-    padding-left: 1em;
-    list-style: disc;
+  color: #5091cd;
+  margin-top: 4px;
+  padding-left: 1em;
+  list-style: disc;
 }
 
 .pp-accord .pp-accord-list ul li span {
-    color: #6d6e71;
-    position: relative;
-    left: -5px;
+  color: #6d6e71;
+  position: relative;
+  left: -5px;
 }
 
 @media all and (max-width: 799px) {
-    .pp-container.switcher {
-        opacity: 0;
-        -webkit-transition: opacity 0 ease;
-        -moz-transition: opacity 0 ease;
-        transition: opacity 0 ease;
-        z-index: -10;
-    }
+  .pp-container.switcher {
+    opacity: 0;
+    -webkit-transition: opacity 0 ease;
+    -moz-transition: opacity 0 ease;
+    transition: opacity 0 ease;
+    z-index: -10;
+  }
 
-    .pp-accord-list-container {
-        display: block;
-        max-height: 0;
-        -webkit-transition: max-height 400ms ease-in-out;
-        -moz-transition: max-height 400ms ease-in-out;
-        transition: max-height 400ms ease-in-out;
-        overflow: hidden;
-    }
+  .pp-accord-list-container {
+    display: block;
+    max-height: 0;
+    -webkit-transition: max-height 400ms ease-in-out;
+    -moz-transition: max-height 400ms ease-in-out;
+    transition: max-height 400ms ease-in-out;
+    overflow: hidden;
+  }
 
-    .pp-accord.active .pp-accord-list-container {
-        max-height: 210px;
-    }
+  .pp-accord.active .pp-accord-list-container {
+    max-height: 210px;
+  }
 }
 
 @media all and (min-width: 800px) {
-    .pp-accordion {
-        width: 80%;
-        min-width: 780px;
-    }
+  .pp-accordion {
+    width: 80%;
+    min-width: 780px;
+  }
 
-    .pp-accord:not(.active) .pp-accord-list-container {
-        display: none;
-    }
+  .pp-accord:not(.active) .pp-accord-list-container {
+    display: none;
+  }
 
-    .pp-accord {
-        margin-bottom: 0.25em;
-        -webkit-transition: opacity 600ms ease-in-out;
-        -moz-transition: opacity 600ms ease-in-out;
-        transition: opacity 600ms ease-in-out;
-        pointer-events: none;
-    }
+  .pp-accord {
+    margin-bottom: 0.25em;
+    -webkit-transition: opacity 600ms ease-in-out;
+    -moz-transition: opacity 600ms ease-in-out;
+    transition: opacity 600ms ease-in-out;
+    pointer-events: none;
+  }
 
-    .pp-accord.hide {
-        opacity: 0;
-        -webkit-transition: opacity 200ms ease-in-out;
-        -moz-transition: opacity 200ms ease-in-out;
-        transition: opacity 200ms ease-in-out;
-    }
+  .pp-accord.hide {
+    opacity: 0;
+    -webkit-transition: opacity 200ms ease-in-out;
+    -moz-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+  }
 
-    .pp-accord:not(.active) {
-        width: calc((100% - 186px) / 2 - 50px);
-        position: absolute;
-    }
+  .pp-accord:not(.active) {
+    width: calc((100% - 186px) / 2 - 50px);
+    position: absolute;
+  }
 
-    .pp-accord.left {
-        left: 0;
-    }
+  .pp-accord.left {
+    left: 0;
+  }
 
-    .pp-accord.right {
-        right: 0;
-    }
+  .pp-accord.right {
+    right: 0;
+  }
 
-    .pp-accord.upper {
-        top: 260px;
-    }
+  .pp-accord.upper {
+    top: 260px;
+  }
 
-    .pp-accord.lower {
-        top: 360px;
-    }
+  .pp-accord.lower {
+    top: 360px;
+  }
 
-    .pp-accord.bottom {
-        bottom: 0;
-        width: 100%;
-    }
+  .pp-accord.bottom {
+    bottom: 0;
+    width: 100%;
+  }
 
-    .pp-accord:not(.active) .pp-header {
-        background: none;
-        color: #2d547b;
-    }
+  .pp-accord:not(.active) .pp-header {
+    background: none;
+    color: #2d547b;
+  }
 
-    .pp-accord.left .pp-header {
-        text-align: right;
-    }
+  .pp-accord.left .pp-header {
+    text-align: right;
+  }
 
-    .pp-accord.right .pp-header {
-        text-align: left;
-    }
+  .pp-accord.right .pp-header {
+    text-align: left;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
